@@ -31,6 +31,7 @@ setup(
     ],
     install_requires=[
         "Django>=1.6",
+        "rauth>=0.7",
     ],
     zip_safe=False,
 )

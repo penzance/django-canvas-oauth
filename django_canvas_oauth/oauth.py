@@ -59,12 +59,9 @@ def oauth_callback(request):
         raise BadOAuthReturnError("No code param in oauth_middleware response")
     service = get_oauth_service(request)
     token = service.get_access_token(decoder=json.loads, params={"code": code})
-    try:
-        admin_id = get_lti_param(request, "custom_canvas_user_login_id")
-        course_id = get_lti_param(request, "custom_canvas_course_id")
-        admin = OAuthUser.objects.get(admin_id=admin_id, course_id=course_id)
-    except OAuthUser.DoesNotExist:
-        admin = OAuthUser.objects.create(admin_id=admin_id, course_id=course_id)
+    admin_id = get_lti_param(request, "custom_canvas_user_login_id")
+    course_id = get_lti_param(request, "custom_canvas_course_id")
+    admin, _ = OAuthUser.objects.get_or_create(admin_id=admin_id, course_id=course_id)
     OAuthToken.objects.create(token=token, admin=admin)
     return redirect(request.session["oauth_return_uri"])
 

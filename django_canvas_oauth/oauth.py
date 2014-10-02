@@ -14,7 +14,7 @@ def get_token(request):
         course from LTI parameters."""
     admin_id = get_lti_param(request, "custom_canvas_user_login_id")
     course_id = get_lti_param(request, "custom_canvas_course_id")
-    get_token_backend(admin_id, course_id)
+    return get_token_backend(admin_id, course_id)
 
 
 def get_token_backend(admin_id, course_id):

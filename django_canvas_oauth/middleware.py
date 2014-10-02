@@ -1,5 +1,5 @@
-from oauth_middleware.exceptions import NewTokenNeeded
-from oauth_middleware.oauth import begin_oauth
+from django_canvas_oauth.exceptions import NewTokenNeeded
+from django_canvas_oauth.oauth import begin_oauth
 
 
 class OAuthMiddleware(object):

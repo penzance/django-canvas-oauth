@@ -34,7 +34,7 @@ setup(
         "rauth>=0.7",
     ],
     dependency_links=[
-        "git+https://github.com/Harvard-University-iCommons/django-auth-lti.git@master#egg=django-canvas-oauth"
+        "git+https://github.com/Harvard-University-iCommons/django-auth-lti.git@master#egg=django-auth-lti"
     ],
     zip_safe=False,
 )
